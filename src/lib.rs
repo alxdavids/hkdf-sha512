@@ -15,6 +15,24 @@ use crypto::sha2::Sha512;
 
 const SHA512_OUTPUT_BYTES_LENGTH: usize = 64;
 
+/// A wrapper around the HKDF functionality in cases where it is required that
+/// you return a specific instance of HKDF.
+///
+/// (largely redundant as we onyl support SHA-512)
+pub struct Hkdf{}
+
+impl Hkdf {
+    /// extract for specific HKDF invocation
+    pub fn extract(seed: &[u8], secret: &[u8], out: &mut Vec<u8>) {
+        extract(seed, secret, out)
+    }
+
+    /// expand for specific HKDF invocation
+    pub fn expand(prk: &[u8], info: &[u8], out: &mut Vec<u8>) {
+        expand(prk, info, out)
+    }
+}
+
 /// runs HKDF_Extract as specified in
 /// [RFC5869](https://tools.ietf.org/html/rfc5869).
 pub fn extract(seed: &[u8], secret: &[u8], out: &mut Vec<u8>) {
