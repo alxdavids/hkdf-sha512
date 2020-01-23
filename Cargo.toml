@@ -4,7 +4,7 @@ version = "0.0.1"
 authors = ["Alex Davidson <coela@alxdavids.xyz>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 rust-crypto = "0.2.36"
+rand = "0.7.3"
+rand_core = "0.5.1"
